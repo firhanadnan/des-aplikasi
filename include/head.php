@@ -20,6 +20,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Dokumentasi E-Surat </title>
 	<link rel="canonical" href="https://www.wrappixel.com/templates/materialpro/" />
+    <link type="text/css" rel="stylesheet" href="asset/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="asset/css/jquery-ui.css"  media="screen,projection"/>
     <!-- Bootstrap Core CSS -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -50,7 +52,7 @@
         }
         .bg::before {
             content: '';
-            background-image: url('./asset/img/background.jpg');
+            background-image: url('./upload/background.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: scroll;

@@ -3,7 +3,7 @@
     if(!empty($_SESSION['admin'])){
 ?>
 
-<body class="fix-header card-no-border logo-center">
+<body class="fix-header card-no-border logo-center bg">
 
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
@@ -89,7 +89,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">PERSONAL</li>
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                            <a class="has-arrow" href="./" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                         </li>
                         <?php
                         if($_SESSION['admin'] == 1 || $_SESSION['admin'] == 3){ ?>

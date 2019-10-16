@@ -1,4 +1,3 @@
-
 <?php
     //cek session
     if(empty($_SESSION['admin'])){
@@ -142,21 +141,21 @@
             }
         } else {?>
 
-            <!-- Container fluid  -->
-<!-- ============================================================== -->
-<div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <div class="row page-titles">
-        <div class="col-md-5 col-8 align-self-center">
-            <h3 class="text-themecolor m-b-0 m-t-0">Surat Masuk</h3>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">surat Masuk</li>
-            </ol>
-        </div>
-    </div>
+       <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                    <h3 class="text-themecolor m-b-0 m-t-0">Surat Masuk</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">surat Masuk</li>
+                    </ol>
+                </div>
+            </div> 
 
             <?php
                 if(isset($_SESSION['errQ'])){
@@ -187,165 +186,163 @@
                 }
             ?>
 
-<div class="row">
-<div class="col-12">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Input Surat Masuk</h4>
-                <form class="form-material m-t-10" method="POST" action="?page=tsm&act=add" enctype="multipart/form-data">
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Input Surat Masuk</h4>
+                    <form class="form-material m-t-10" method="POST" action="?page=tsm&act=add" enctype="multipart/form-data">
+                    <!-- Row in form START -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">No Agenda</label>
-                                <div class="col-md-9">
-                                    <input id="no_agenda" type="number" name="no_agenda" class="form-control form-control-line" placeholder="Masukan No Agenda">
-                                    <?php
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">No Agenda</label>
+                            <div class="col-md-9">
+                            <input id="no_agenda" type="number" class="form-control form-control-line" name="no_agenda" required>
+                               <?php
                                     if(isset($_SESSION['no_agenda'])){
                                         $no_agenda = $_SESSION['no_agenda'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$no_agenda.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$no_agenda.'</div>';
                                         unset($_SESSION['no_agenda']);
-                                        }
-                                    ?> 
-                                </div>
-                            </div>
+                                    }
+                                ?>
                         </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Kode klasifikasi</label>
-                                <div class="col-md-9">
-                                    <select id="kode" type="text" name="kode" class="form-control form-control-line" placeholder="Masukan Kode Klasifikasi">
-                                        <option value="0"> Pilih Kode Klasifikasi</option>
-                                        <?php
-                                            $query = "select kode, nama from tbl_klasifikasi";
-                                            $hasil = mysqli_query($config,$query);
-                                            while($data=mysqli_fetch_array($hasil)){
-                                                echo "<option value=$data[kode]>"."$data[kode]"." $data[nama]</option>";
-                                            }
-                                        ?>    
-                                    </select>            
-                                </div>
-                            </div>
-                        <!--/span-->
                         </div>
-                        <!--/row-->
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Asal Surat</label>
-                                <div class="col-md-9">
-                                    <input id="asal_surat" type="text" name="asal_surat" class="form-control form-control-line" placeholder="Masukan Asal Surat">
-                                    <?php
+                    <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Kode klasifikasi</label>
+                        <div class="col-md-9">
+                            <select id="kode" type="text" class="form-control form-control-line" name="kode" required>
+                                <option value="0">Pilih Kode Klasifikasi</option>
+                                <?php
+                                    $query = "select * from tbl_klasifikasi";
+                                    $hasil = mysqli_query($config,$query);
+                                    while($data=mysqli_fetch_array($hasil)){
+                                        echo "<option value=$data[kode]>$data[nama]</option>";
+                                    }
+
+                                ?>
+                            </select>
+                                <?php
+                                    if(isset($_SESSION['kode'])){
+                                        $kode = $_SESSION['kode'];
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$kode.'</div>';
+                                        unset($_SESSION['kode']);
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Asal Surat</label>
+                            <div class="col-md-9">
+                            <input id="asal_surat" type="text" class="form-control form-control-line" name="asal_surat" required>
+                                <?php
                                     if(isset($_SESSION['asal_surat'])){
                                         $asal_surat = $_SESSION['asal_surat'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$asal_surat.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$asal_surat.'</div>';
                                         unset($_SESSION['asal_surat']);
-                                        }
-                                    ?> 
-                                </div>
-                            </div>
+                                    }
+                                ?>
                         </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Indeks</label>
-                                <div class="col-md-9">
-                                    <input id="indeks" type="text" name="indeks" class="form-control form-control-line" placeholder="Masukan Indeks Surat">
-                                    <?php
+                    </div>
+                </div>
+                 <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Indeks</label>
+                        <div class="col-md-9">
+                            <input id="indeks" type="text" class="form-control form-control-line" name="indeks" required>
+                                <?php
                                     if(isset($_SESSION['indeks'])){
                                         $indeks = $_SESSION['indeks'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$indeks.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$indeks.'</div>';
                                         unset($_SESSION['indeks']);
-                                        }
-                                    ?>            
-                                </div>
+                                    }
+                                ?>
                             </div>
-                        <!--/span-->
                         </div>
-                        <!--/row-->
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Nomor Surat</label>
-                                <div class="col-md-9">
-                                    <input id="no_surat" type="text" name="no_surat" class="form-control form-control-line" placeholder="Masukan No Surat">
-                                    <?php
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">No Surat</label>
+                            <div class="col-md-9">
+                            <input id="no_surat" type="text" class="form-control form-control-line" name="no_surat" required>
+                                <?php
                                     if(isset($_SESSION['no_surat'])){
                                         $no_surat = $_SESSION['no_surat'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$no_surat.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$no_surat.'</div>';
                                         unset($_SESSION['no_surat']);
-                                        }
-                                    ?> 
-                                </div>
+                                    }
+                                    if(isset($_SESSION['errDup'])){
+                                        $errDup = $_SESSION['errDup'];
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$errDup.'</div>';
+                                        unset($_SESSION['errDup']);
+                                    }
+                                ?>
                             </div>
                         </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Tanggal Surat</label>
-                                <div class="col-md-9">
-                                     <input type="text" class="form-control" placeholder="Pilih Tanggal" id="mdate">
-                                    <?php
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Tanggal Surat</label>
+                            <div class="col-md-9">
+                            <input id="mdate" type="text" name="tgl_surat" class="form-control form-control-line" required>
+                                <?php
                                     if(isset($_SESSION['tgl_surat'])){
                                         $tgl_surat = $_SESSION['tgl_surat'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$tgl_surat.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$tgl_surat.'</div>';
                                         unset($_SESSION['tgl_surat']);
-                                        }
-                                    ?>            
-                                </div>
+                                    }
+                                ?>
                             </div>
-                        <!--/span-->
                         </div>
-                        <!--/row-->
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Isi Ringkas</label>
-                                <div class="col-md-9">
-                                    <textarea id="isi" rows="3" type="text" name="isi" class="form-control form-control-line"> </textarea>
-                                    <?php
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Isi Ringkas</label>
+                            <div class="col-md-9">
+                            <textarea id="isi" class="form-control form-control-line" name="isi" required></textarea>
+                                <?php
                                     if(isset($_SESSION['isi'])){
                                         $isi = $_SESSION['isi'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$isi.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$isi.'</div>';
                                         unset($_SESSION['isi']);
-                                        }
-                                    ?> 
-                                </div>
-                            </div>
-                        </div>
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">Keterangan</label>
-                                <div class="col-md-9">
-                                    <input id="keterangan" type="text" name="keterangan" class="form-control form-control-line" placeholder="Masukan keterangan Surat">
-                                    <?php
+                                    }
+                                ?>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Keterangan</label>
+                        <div class="col-md-9">
+                            <input id="keterangan" type="text" class="form-control form-control-line" name="keterangan" required>
+                                <?php
                                     if(isset($_SESSION['keterangan'])){
                                         $keterangan = $_SESSION['keterangan'];
-                                        echo '<small id="alert-message" class="form-control-feedback has-danger">'.$keterangan.'</small>';
+                                        echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$keterangan.'</div>';
                                         unset($_SESSION['keterangan']);
-                                        }
-                                    ?>            
-                                </div>
-                            </div>
-                        <!--/span-->
+                                    }
+                                ?>
                         </div>
-                        <!--/row-->
                     </div>
-                    <div class="row">
-                        <!--/span-->
-                        <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="control-label text-right col-md-3">File Upload</label>
-                                <div class="col-md-9">
-                                  <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file"> <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
-                                            <input type="hidden">
-                                            <input type="file" name="file" id="file"> </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a> </div>
-                                   <?php
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">File Upload</label>
+                            <div class="col-md-9">
+                                    <input type="file" id="file" name="file" class="form-control form-control-line" >
+                                        <?php
                                             if(isset($_SESSION['errSize'])){
                                                 $errSize = $_SESSION['errSize'];
                                                 echo '<div id="alert-message" class="callout bottom z-depth-1 red lighten-4 red-text">'.$errSize.'</div>';
@@ -357,25 +354,24 @@
                                                 unset($_SESSION['errFormat']);
                                             }
                                         ?>
-                                    <small class="text-danger">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 2 MB!</small>      
+                                    <small class="text-danger">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 2 MB!</small>
                                 </div>
                             </div>
-                        <!--/span-->
                         </div>
-                        <!--/row-->
-                    </div> 
-                    <div class="form-actions" style="margin-left: 40px;">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                    </div>
+
+                     <div  style="margin-left: 40px;">
+                        <button type="submit" name="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                         <a href="?page=tsm" class="btn btn-inverse">Cancel</a>
-                    </div>                                       
+                     </div>
                 </form>
                 <!-- Form END -->
-            </div>
-        </div>
-    </div>
-</div>
-            <!-- Row form END --> 
 
+            </div>
+            <!-- Row form END -->
+        </div>
+     </div>
+  </div>
 <?php
         }
     }
