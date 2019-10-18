@@ -29,39 +29,33 @@
                     $pg = 1;
                 } else {
                     $curr = ($pg - 1) * $limit;
-                }
+                } 
+            $query = mysqli_query($config, "SELECT * FROM tbl_user LIMIT $curr, $limit");
+                ?>
 
-                $query = mysqli_query($config, "SELECT * FROM tbl_user LIMIT $curr, $limit");
-                echo '<!-- Row Start -->
-                    <div class="row">
-                        <!-- Secondary Nav START -->
-                        <div class="col s12">
-                        <div class="z-depth-1 red lighten-1">
-                            <nav class="secondary-nav red lighten-1">
-                                <div class="nav-wrapper red lighten-1">
-                                        <div class="col m12">
-                                            <ul class="left">
-                                                <li class="waves-effect waves-light hide-on-small-only"><a href="?page=sett&sub=usr" class="judul"><i class="material-icons">people</i> Manajemen User</a></li>
-                                                <li class="waves-effect waves-light">
-                                                    <a href="?page=sett&sub=usr&act=add"><i class="material-icons md-24">person_add</i> Tambah User</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                        <!-- Secondary Nav END -->
-                    </div>
-                    <!-- Row END -->';
 
-                    if(isset($_SESSION['succAdd'])){
+        <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">User</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Manajemen User</li>
+                </ol>
+            </div>
+        </div>
+        <?php
+
+            if(isset($_SESSION['succAdd'])){
                         $succAdd = $_SESSION['succAdd'];
-                        echo '<div id="alert-message" class="row">
-                                <div class="col m12">
-                                    <div class="card green lighten-5">
-                                        <div class="card-content notif">
-                                            <span class="card-title green-text"><i class="material-icons md-36">done</i> '.$succAdd.'</span>
+                        echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$succAdd.'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -70,11 +64,11 @@
                     }
                     if(isset($_SESSION['succEdit'])){
                         $succEdit = $_SESSION['succEdit'];
-                        echo '<div id="alert-message" class="row">
-                                <div class="col m12">
-                                    <div class="card green lighten-5">
-                                        <div class="card-content notif">
-                                            <span class="card-title green-text"><i class="material-icons md-36">done</i> '.$succEdit.'</span>
+                        echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$succEdit.'</p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,118 +77,76 @@
                     }
                     if(isset($_SESSION['succDel'])){
                         $succDel = $_SESSION['succDel'];
-                        echo '<div id="alert-message" class="row">
-                                <div class="col m12">
-                                    <div class="card green lighten-5">
-                                        <div class="card-content notif">
-                                            <span class="card-title green-text"><i class="material-icons md-36">done</i> '.$succDel.'</span>
+                        echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="text-danger">'.$succDel.'</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>';
                         unset($_SESSION['succDel']);
                     }
+                ?>
 
-                echo '
-                    <!-- Row form Start -->
-                    <div class="row jarak-form">
 
-                        <div class="col m12" id="colres">
-                            <!-- Table START -->
-                            <table class="bordered" id="tbl">
+    <div class="card">
+        <div class="card-body">
+            <a href="?page=sett&sub=usr&act=add" class="btn btn-block btn-danger col-md-1" style="margin-left: 15px;">Add Data</a>  
+             <div class="table-responsive m-t-5">
+                <table id="myTable" class="table table-bordered table-striped">
                                 <thead class="blue lighten-4" id="head">
                                     <tr>
-                                        <th width="8%">No</th>
-                                        <th width="23%">Username</th>
+                                        <th style="vertical-align: middle;" width="8%">No</th>
+                                        <th style="vertical-align: middle;" width="23%">Username</th>
                                         <th width="30%">Nama<br/>NIP</th>
-                                        <th width="22%">Level</th>
-                                        <th width="16%">Tindakan</th>
+                                        <th style="vertical-align: middle;" width="22%">Level</th>
+                                        <th style="vertical-align: middle;" width="16%">Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>';
+                                    <tr>
+                                    <?php 
 
-                                if(mysqli_num_rows($query) > 0){
-                                    $no = 1;
-                                    while($row = mysqli_fetch_array($query)){
-                                    echo '<td>'.$no++.'</td>';
+                                    if(mysqli_num_rows($query) > 0){
+                                        $no = 1;
+                                        while($row = mysqli_fetch_array($query)){
+                                        echo '<td>'.$no++.'</td>';
 
-                                    if($row['admin'] == 1){
-                                        $row['admin'] = 'Super Admin';
-                                    } elseif($row['admin'] == 2){
-                                        $row['admin'] = 'Administrator';
-                                    } else {
-                                        $row['admin'] = 'User Biasa';
-                                    } echo '<td>'.$row['username'].'</td>
-                                            <td>'.$row['nama'].'<br/>'.$row['nip'].'</td>
-                                            <td>'.$row['admin'].'</td>
-                                            <td>';
+                                        if($row['admin'] == 1){
+                                            $row['admin'] = 'Super Admin';
+                                        } elseif($row['admin'] == 2){
+                                            $row['admin'] = 'Administrator';
+                                        } else {
+                                            $row['admin'] = 'User Biasa';
+                                        } echo '<td>'.$row['username'].'</td>
+                                                <td>'.$row['nama'].'<br/>'.$row['nip'].'</td>
+                                                <td>'.$row['admin'].'</td>
+                                                <td>';
 
-                                    if($_SESSION['username'] == $row['username']){
-                                        echo '<button class="btn small blue-grey waves-effect waves-light"><i class="material-icons">error</i> No Action</button>';
-                                    } else {
+                                        if($_SESSION['username'] == $row['username']){
+                                            echo '<button class="btn btn-primary">No Action</button>';
+                                        } else {
 
                                         if($row['id_user'] == 1){
-                                            echo '<button class="btn small blue-grey waves-effect waves-light"><i class="material-icons">error</i> No Action</button>';
+                                            echo '<button class="btn btn-primary">No Action</button>';
                                         } else {
-                                          echo ' <a class="btn small blue waves-effect waves-light" href="?page=sett&sub=usr&act=edit&id_user='.$row['id_user'].'">
-                                                 <i class="material-icons">edit</i> EDIT</a>
-                                                 <a class="btn small deep-orange waves-effect waves-light" href="?page=sett&sub=usr&act=del&id_user='.$row['id_user'].'"><i class="material-icons">delete</i> DEL</a>';
+                                          echo ' <a class="btn btn-success" href="?page=sett&sub=usr&act=edit&id_user='.$row['id_user'].'">EDIT</a>
+                                                 <a class="btn btn-danger" href="?page=sett&sub=usr&act=del&id_user='.$row['id_user'].'">DELETE</a>';
                                         }
                                     } echo '</td>
                                     </tr>
                                 </tbody>';
                                     }
-                                } else {
-                        echo '<tr><td colspan="5"><center><p class="add">Tidak ada data untuk ditampilkan</p></center></td></tr>';
-                                }
+                                } 
                       echo '</table>
                             <!-- Table END -->
-                        </div>
-
-                    </div>
-                    <!-- Row form END -->';
-
-                    $query = mysqli_query($config, "SELECT * FROM tbl_user");
-                    $cdata = mysqli_num_rows($query);
-                    $cpg = ceil($cdata/$limit);
-
-                    echo '<!-- Pagination START -->
-                          <ul class="pagination">';
-
-                    if($cdata > $limit){
-
-                        if($pg > 1){
-                            $prev = $pg - 1;
-                            echo '<li><a href="?page=sett&sub=usr&pg=1"><i class="material-icons md-48">first_page</i></a></li>
-                                  <li><a href="?page=sett&sub=usr&pg='.$prev.'"><i class="material-icons md-48">chevron_left</i></a></li>';
-                        } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">first_page</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">chevron_left</i></a></li>';
-                        }
-
-                        //perulangan pagging
-                        for($i=1; $i <= $cpg; $i++)
-                            if($i != $pg){
-                                echo '<li class="waves-effect waves-dark"><a href="?page=sett&sub=usr&pg='.$i.'"> '.$i.' </a></li>';
-                            } else {
-                                echo '<li class="active waves-effect waves-dark"><a href="?page=sett&sub=usr&pg='.$i.'"> '.$i.' </a></li>';
-                            }
-
-                        //last and next pagging
-                        if($pg < $cpg){
-                            $next = $pg + 1;
-                            echo '<li><a href="?page=sett&sub=usr&pg='.$next.'"><i class="material-icons md-48">chevron_right</i></a></li>
-                                  <li><a href="?page=sett&sub=usr&pg='.$cpg.'"><i class="material-icons md-48">last_page</i></a></li>';
-                        } else {
-                            echo '<li class="disabled"><a href=""><i class="material-icons md-48">chevron_right</i></a></li>
-                                  <li class="disabled"><a href=""><i class="material-icons md-48">last_page</i></a></li>';
-                        }
-                            echo ' </ul>
-                                   <!-- Pagination END -->';
-                    } else {
-                        echo '';
-                    }
+            </div>
+        </div>
+    </div>';
+                    
+              
                 }
             }
 ?>

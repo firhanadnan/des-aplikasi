@@ -132,7 +132,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Input Klasifikasi Surat</h4>
+                <h4 class="card-title">Update Profile</h4>
                     <!-- Form START -->
                     <form class="form-material m-t-10" method="post" action="?page=pro&sub=pass">
                 <div class="row">

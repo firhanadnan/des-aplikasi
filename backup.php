@@ -11,28 +11,23 @@
                     window.alert("ERROR! Anda tidak memiliki hak akses untuk membuka halaman ini");
                     window.location.href="./logout.php";
                   </script>';
-        } else {
+        } else { ?>
 
-        echo '<!-- Row Start -->
-                <div class="row">
-                    <!-- Secondary Nav START -->
-                    <div class="col s12">
-                        <div class="z-depth-1 red lighten-1">
-                            <nav class="secondary-nav red lighten-1">
-                                <div class="nav-wrapper red lighten-1">
-                                    <div class="col m12">
-                                        <ul class="left">
-                                            <li class="waves-effect waves-light"><a href="?page=sett&sub=back" class="judul"><i class="material-icons">storage</i> Backup Database</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                    <!-- Secondary Nav END -->
-                </div>
-                <!-- Row END -->';
-
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">Backup Database</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Backup</li>
+                </ol>
+            </div>
+        </div>
+        <?php
                 // download file hasil backup
                 if(isset($_REQUEST['nama_file'])){
 
@@ -147,37 +142,39 @@
                     //backup("localhost","user_database","pass_database","nama_database",$file,"tabel1,tabel2,tabel3");
 
                   echo '<!-- Row form Start -->
-                        <div class="row">
-                            <div class="col m12">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <span class="card-title black-text"><div class="confirr green-text"><i class="material-icons md-36">done</i>
-                                        SUKSES! Database berhasil dibackup</div></span>
-                                        <p class="kata" style="margin-top: 10px;">Silakan klik tombol <strong>"Download"</strong> dibawah ini untuk mendownload file backup database.</p>
-                                    </div>
-                                    <div class="card-action">
-                                        <form method="post" enctype="multipart/form-data" >
-                                            <a href="?page=sett&sub=back&nama_file='.$file.'" class="btn-large blue waves-effect waves-light white-text">DOWNLOAD <i class="material-icons">file_download</i></a>
-                                        </form>
-                                    </div>
+                                      <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-info"><b>SUKSES! Database berhasil dibackup</b></h4>
+                                    <p class="kata">Silakan klik tombol <strong>"Download"</strong> dibawah ini untuk mendownload file backup database.</p>
+
+                                </div>
+                                <div class="card-action">
+                                    <form method="post" enctype="multipart/form-data" >
+                                        <a href="?page=sett&sub=back&nama_file='.$file.'" style="margin-left:20px; margin-bottom:20px;" class="btn btn-lg btn-warning">DOWNLOAD</a>
+
+                                    </form>
                                 </div>
                             </div>
-                        </div>';
+                        </div>
+                    </div>
+                        ';
                 } else {
 
                     echo '
                     <!-- Row form Start -->
                     <div class="row">
-                        <div class="col m12">
+                        <div class="col-12">
                             <div class="card">
-                                <div class="card-content">
-                                    <span class="card-title black-text">Backup Database</span>
-                                    <p class="kata">Silakan klik tombol <strong>"Backup"</strong> untuk memulai proses backup data. Setelah proses backup selesai, silakan download file backup database tersebut dan simpan di lokasi yang aman.<span class="red-text"><strong>*</strong></span></p><br/>
+                                <div class="card-body">
+                                    <h4 class="card-title"><b>Backup Database</b></h4>
+                                    <p class="kata">Silakan klik tombol <strong>"Backup"</strong> untuk memulai proses backup data. Setelah proses backup selesai, silakan download file backup database tersebut dan simpan di lokasi yang aman.<span class="text-danger"><strong>*</strong></span></p>
 
                                 </div>
                                 <div class="card-action">
                                     <form method="post" enctype="multipart/form-data" >
-                                        <button type="submit" class="btn-large blue waves-effect waves-light" name="backup">BACKUP <i class="material-icons">backup</i></button>
+                                        <button style="margin-left:20px; margin-bottom:20px;" type="submit" class="btn btn-lg btn-warning" name="backup">BACKUP</button>
                                     </form>
                                 </div>
                             </div>

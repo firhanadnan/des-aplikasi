@@ -79,22 +79,21 @@
             }
         } else {?>
 
-            <!-- Row Start -->
-            <div class="row">
-                <!-- Secondary Nav START -->
-                <div class="col s12">
-                    <nav class="secondary-nav">
-                        <div class="nav-wrapper blue-grey darken-1">
-                            <ul class="left">
-                                <li class="waves-effect waves-light"><a href="?page=sett&sub=usr&act=add" class="judul"><i class="material-icons">person_add</i> Tambah User</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+       <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                    <h3 class="text-themecolor m-b-0 m-t-0">User</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Add User</li>
+                    </ol>
                 </div>
-                <!-- Secondary Nav END -->
-            </div>
-            <!-- Row END -->
-
+            </div> 
             <?php
                 if(isset($_SESSION['errQ'])){
                     $errQ = $_SESSION['errQ'];
@@ -124,17 +123,20 @@
                 }
             ?>
 
-            <!-- Row form Start -->
-            <div class="row jarak-form">
-
-                <!-- Form START -->
-                <form class="col s12" method="post" action="?page=sett&sub=usr&act=add">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add User</h4>
+                <form class="form-material m-t-10" method="post" action="?page=sett&sub=usr&act=add">
 
                     <!-- Row in form START -->
                     <div class="row">
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Username minimal 5 karakter [ huruf, angka atau underscore(_) ]">
-                            <i class="material-icons prefix md-prefix">account_circle</i>
-                            <input id="username" type="text" class="validate" name="username" required>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Username</label>
+                            <div class="col-md-9">
+                            <input id="username" type="text" class="form-control form-control-line" name="username" required>
                                 <?php
                                     if(isset($_SESSION['uname'])){
                                         $uname = $_SESSION['uname'];
@@ -152,11 +154,14 @@
                                         unset($_SESSION['errUser5']);
                                     }
                                 ?>
-                            <label for="username">Username</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix md-prefix">text_fields</i>
-                            <input id="nama" type="text" class="validate" name="nama" required>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Nama</label>
+                        <div class="col-md-9">
+                            <input id="nama" type="text" class="form-control form-control-line" name="nama" required>
                                 <?php
                                     if(isset($_SESSION['namauser'])){
                                         $namauser = $_SESSION['namauser'];
@@ -164,11 +169,16 @@
                                         unset($_SESSION['namauser']);
                                     }
                                 ?>
-                            <label for="nama">Nama</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Password minimal 5 karakter">
-                            <i class="material-icons prefix md-prefix">lock</i>
-                            <input id="password" type="password" class="validate" name="password" required>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Password</label>
+                            <div class="col-md-9">
+                            <input id="password" type="password" class="form-control form-control-line" name="password" required>
                                 <?php
                                     if(isset($_SESSION['errPassword'])){
                                         $errPassword = $_SESSION['errPassword'];
@@ -176,11 +186,14 @@
                                         unset($_SESSION['errPassword']);
                                     }
                                 ?>
-                            <label for="password">Password</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Jika belum memiliki NIP, isi dengan minus(-)">
-                            <i class="material-icons prefix md-prefix">looks_one</i>
-                            <input id="nip" type="text" class="validate" name="nip" required>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">NIP</label>
+                            <div class="col-md-9">
+                            <input id="nip" type="text" class="form-control form-control-line" name="nip" required>
                                 <?php
                                     if(isset($_SESSION['nipuser'])){
                                         $nipuser = $_SESSION['nipuser'];
@@ -188,12 +201,17 @@
                                         unset($_SESSION['nipuser']);
                                     }
                                 ?>
-                            <label for="nip">NIP</label>
+                            </div>
                         </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix md-prefix">supervisor_account</i><label>Pilih Tipe User</label><br/>
-                            <div class="input-field col s11 right">
-                                <select class="browser-default validate" name="admin" id="admin" required>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Tipe User</label>
+                            <div class="col-md-9">
+                                <select class="form-control form-control-line" name="admin" id="admin" required>
+                                    <option value="0">Pilih Tipe User</option>
                                     <option value="3">User Biasa</option>
                                     <option value="2">Administrator</option>
                                 </select>
@@ -207,21 +225,19 @@
                                 ?>
                         </div>
                     </div>
-                    <br/>
-                    <!-- Row in form END -->
-                    <div class="row">
-                        <div class="col 6">
-                            <button type="submit" name="submit" class="btn-large blue waves-effect waves-light">SIMPAN <i class="material-icons">done</i></button>
-                        </div>
-                        <div class="col 6">
-                            <a href="?page=sett&sub=usr" class="btn-large deep-orange waves-effect waves-light">BATAL <i class="material-icons">clear</i></a>
-                        </div>
-                    </div>
+                </div>
 
+                 <div  style="margin-left: 40px;">
+                    <button type="submit" name="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                    <a href="?page=sett&sub=usr" class="btn btn-inverse">Cancel</a>
+                 </div>
                 </form>
                 <!-- Form END -->
 
             </div>
+       </div>
+    </div>
+</div>
             <!-- Row form END -->
 
 <?php
