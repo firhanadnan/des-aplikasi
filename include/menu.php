@@ -118,7 +118,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow " href="#" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Referensi</span></a>
+                            <a href="?page=ref" aria-expanded="false"><i class="mdi mdi-format-list-bulleted"></i><span class="hide-menu">Klasifikasi Surat</span></a>
                         </li>
                         <?php
                             if($_SESSION['admin'] == 1){ ?>

@@ -240,7 +240,7 @@
                                 <label class="control-label text-right col-md-3">Kode klasifikasi</label>
                                 <div class="col-md-9">
                                     <select id="kode" type="text" name="kode" class="form-control form-control-line" placeholder="Masukan Kode Klasifikasi">
-                                       <option value="0"><?= $kode;?></option>
+                                       <option value="<?= $data[kode];?>"><?= $kode;?></option>
                                             <?php
                                                 $query = "select * from tbl_klasifikasi";
                                                 $hasil = mysqli_query($config,$query);

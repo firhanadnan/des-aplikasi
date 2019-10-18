@@ -169,7 +169,7 @@
 
         <!-- Container START -->
         <div class="container">
-            <div id="colres">
+            <div >
                 <div class="disp">';
                     $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo, website, email FROM tbl_instansi");
                     list($institusi, $nama, $status, $alamat, $logo, $website, $email) = mysqli_fetch_array($query2);

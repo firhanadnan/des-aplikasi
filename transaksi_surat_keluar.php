@@ -13,105 +13,100 @@
                   </script>';
         } else {
 
-            if(isset($_REQUEST['act'])){
-                $act = $_REQUEST['act'];
-                switch ($act) {
-                    case 'add':
-                        include "tambah_surat_masuk.php";
-                        break;
-                    case 'edit':
-                        include "edit_surat_masuk.php";
-                        break;
-                    case 'disp':
-                        include "disposisi.php";
-                        break;
-                    case 'print':
-                        include "cetak_disposisi.php";
-                        break;
-                    case 'del':
-                        include "hapus_surat_masuk.php";
-                        break;
-                }
-            } else{ 
-            $query = mysqli_query($config, "SELECT surat_masuk FROM tbl_sett");
-                list($surat_masuk) = mysqli_fetch_array($query);
+        if(isset($_REQUEST['act'])){
+            $act = $_REQUEST['act'];
+            switch ($act) {
+                case 'add':
+                    include "tambah_surat_keluar.php";
+                    break;
+                case 'edit':
+                    include "edit_surat_keluar.php";
+                    break;
+                case 'del':
+                    include "hapus_surat_keluar.php";
+                    break;
+            }
+        } else {
 
-                //pagging
-                $limit = $surat_masuk;
-                $pg = @$_GET['pg'];
+            $query = mysqli_query($config, "SELECT surat_keluar FROM tbl_sett");
+            list($surat_keluar) = mysqli_fetch_array($query);
+
+            //pagging
+            $limit = $surat_keluar;
+            $pg = @$_GET['pg'];
                 if(empty($pg)){
                     $curr = 0;
                     $pg = 1;
                 } else {
                     $curr = ($pg - 1) * $limit;
-                }?> 
-                <!-- Container fluid  -->
-    <!-- ============================================================== -->
+                }?>
+
     <div class="container-fluid">
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor m-b-0 m-t-0">Surat Masuk</h3>
+                <h3 class="text-themecolor m-b-0 m-t-0">Surat Keluar</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">surat Masuk</li>
+                    <li class="breadcrumb-item active">surat Keluar</li>
                 </ol>
             </div>
         </div>
-<?php
-                    if(isset($_SESSION['succAdd'])){
-                        $succAdd = $_SESSION['succAdd'];
-                        echo '<div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p>'.$succAdd.'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-                        unset($_SESSION['succAdd']);
-                    }
-                    if(isset($_SESSION['succEdit'])){
-                        $succEdit = $_SESSION['succEdit'];
-                        echo '<div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p>'.$succEdit.'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-                        unset($_SESSION['succEdit']);
-                    }
-                    if(isset($_SESSION['succDel'])){
-                        $succDel = $_SESSION['succDel'];
-                        echo '<div class="row">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p class="text-danger">'.$succDel.'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>';
-                        unset($_SESSION['succDel']);
-                    }
-                ?>
 
-    <div class="card">
+        <?php
+            if(isset($_SESSION['succAdd'])){
+                $succAdd = $_SESSION['succAdd'];
+                echo '<div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>'.$succAdd.'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                unset($_SESSION['succAdd']);
+            }
+            if(isset($_SESSION['succEdit'])){
+                $succEdit = $_SESSION['succEdit'];
+                echo '<div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>'.$succEdit.'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                unset($_SESSION['succEdit']);
+            }
+            if(isset($_SESSION['succDel'])){
+                $succDel = $_SESSION['succDel'];
+                echo '<div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="text-danger">'.$succDel.'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+                unset($_SESSION['succDel']);
+            }
+        ?>
+
+ <div class="card">
         <div class="card-body">
-            <a href="?page=tsm&act=add" class="btn btn-block btn-danger col-md-1" style="margin-left: 15px;">Add Data</a>  
+            <a href="?page=tsk&act=add" class="btn btn-block btn-danger col-md-1" style="margin-left: 15px;">Add Data</a>  
              <div class="table-responsive m-t-5">
                 <table id="myTable" class="table table-bordered table-striped">
                     <thead id="head">
                         <tr>
                             <th width="10%">No. Agenda<br/>Kode</th>
                             <th width="30%">Isi Ringkas<br/> File</th>
-                            <th width="24%" style="vertical-align: middle;">Asal Surat</th>
+                            <th width="24%" style="vertical-align: middle;">Tujuan</th>
                             <th width="18%">No. Surat<br/>Tgl Surat</th>
                             <th width="18%" style="vertical-align: middle;">Tindakan</th>
                         </tr>
@@ -121,7 +116,7 @@
                             
                                <?php 
                                //script untuk menampilkan data
-                               $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk ORDER by id_surat DESC ");
+                               $query = mysqli_query($config, "SELECT * FROM tbl_surat_keluar ORDER by id_surat DESC ");
                                 if(mysqli_num_rows($query) > 0){
                                     $no = 1;
                                     while($row = mysqli_fetch_array($query)){
@@ -134,7 +129,7 @@
                                         } else {
                                           echo '<em>Tidak ada file yang di upload</em>';
                                         } echo '</td>
-                                        <td style="vertical-align: middle;">'.$row['asal_surat'].'</td>';
+                                        <td style="vertical-align: middle;">'.$row['tujuan'].'</td>';
 
                                         $y = substr($row['tgl_surat'],0,4);
                                         $m = substr($row['tgl_surat'],5,2);
@@ -171,13 +166,10 @@
                                         <td>';
 
                                         if($_SESSION['id_user'] != $row['id_user'] AND $_SESSION['id_user'] != 1){
-                                            echo '<a class="btn btn-waring" href="?page=ctk&id_surat='.$row['id_surat'].'" target="_blank">
-                                                PRINT</a>';
+                                            echo '<button class="btn btn-success">error</i> No Action</button>';
                                         } else {
-                                          echo '<a style="margin-top: 20px;" class="btn btn-success btn-circle" data-toggle="tooltip" data-placement="top" title="Edit Surat" href="?page=tsm&act=edit&id_surat='.$row['id_surat'].'"><i class="fa fa-link"></i></a>
-                                                <a style="margin-top: 20px;" class="btn btn-primary btn-circle" data-toggle="tooltip" data-placement="top" title="Disposisi Surat" href="?page=tsm&act=disp&id_surat='.$row['id_surat'].'"><i class="fa fa-list"></i></a>
-                                                <a style="margin-top: 20px;" class="btn btn-warning btn-circle" data-toggle="tooltip" data-placement="top" title="Print Surat" href="?page=ctk&id_surat='.$row['id_surat'].'" target="_blank"><i class="fa fa-check"></i></a>
-                                                <a style="margin-top: 20px;" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="top" title="Delete Surat" href="?page=tsm&act=del&id_surat='.$row['id_surat'].'"><i class="fa fa-times"></i></a>';
+                                          echo '<a style="margin-top: 20px;" class="btn btn-success btn-circle" data-toggle="tooltip" data-placement="top" title="Edit Surat" href="?page=tsk&act=edit&id_surat='.$row['id_surat'].'"><i class="fa fa-link"></i></a>
+                                                <a style="margin-top: 20px;" class="btn btn-danger btn-circle" data-toggle="tooltip" data-placement="top" title="Delete Surat" href="?page=tsk&act=del&id_surat='.$row['id_surat'].'"><i class="fa fa-times"></i></a>';
                                         
                                         } echo '
                                         </td>
@@ -185,12 +177,10 @@
                                 </tbody>';
                                 }
                             } echo '</table>
-            </div>
-        </div>
-    </div>';
+                        </div>
+                    </div>
+                </div>';
             }
         }
     }
- ?>    
-
-                
+ ?>  
