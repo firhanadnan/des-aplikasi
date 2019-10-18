@@ -66,64 +66,66 @@
                     }
                 }
             } else {?>
-                <!-- Row Start -->
-                <div class="row">
-                    <!-- Secondary Nav START -->
-                    <div class="col s12">
-                        <div class="z-depth-1 red lighten-1">
-                            <nav class="secondary-nav red lighten-1">
-                                <div class="nav-wrapper red lighten-1">
-                                <ul class="left">
-                                    <li class="waves-effect waves-light"><a href="?page=ref&act=add" class="judul"><i class="material-icons">bookmark</i> Tambah Klasifikasi Surat</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
+       <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 col-8 align-self-center">
+                    <h3 class="text-themecolor m-b-0 m-t-0">Klasifikasi Surat</h3>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Tambah Klasifikasi Surat</li>
+                    </ol>
                 </div>
-                    <!-- Secondary Nav END -->
-                </div>
-                <!-- Row END -->
+            </div> 
 
                 <?php
-                    if(isset($_SESSION['errQ'])){
-                        $errQ = $_SESSION['errQ'];
-                        echo '<div id="alert-message" class="row">
-                                <div class="col m12">
-                                    <div class="card red lighten-5">
-                                        <div class="card-content notif">
-                                            <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errQ.'</span>
-                                        </div>
+                if(isset($_SESSION['errQ'])){
+                    $errQ = $_SESSION['errQ'];
+                    echo '<div id="alert-message" class="row">
+                            <div class="col m12">
+                                <div class="card red lighten-5">
+                                    <div class="card-content notif">
+                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errQ.'</span>
                                     </div>
                                 </div>
-                            </div>';
-                        unset($_SESSION['errQ']);
-                    }
-                    if(isset($_SESSION['errEmpty'])){
-                        $errEmpty = $_SESSION['errEmpty'];
-                        echo '<div id="alert-message" class="row">
-                                <div class="col m12">
-                                    <div class="card red lighten-5">
-                                        <div class="card-content notif">
-                                            <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errEmpty.'</span>
-                                        </div>
+                            </div>
+                        </div>';
+                    unset($_SESSION['errQ']);
+                }
+                if(isset($_SESSION['errEmpty'])){
+                    $errEmpty = $_SESSION['errEmpty'];
+                    echo '<div id="alert-message" class="row">
+                            <div class="col m12">
+                                <div class="card red lighten-5">
+                                    <div class="card-content notif">
+                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errEmpty.'</span>
                                     </div>
                                 </div>
-                            </div>';
-                        unset($_SESSION['errEmpty']);
-                    }
+                            </div>
+                        </div>';
+                    unset($_SESSION['errEmpty']);
+                }
                 ?>
 
-                <!-- Row form Start -->
-                <div class="row jarak-form">
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Input Klasifikasi Surat</h4>
 
                     <!-- Form START -->
-                    <form class="col s12" method="post" action="?page=ref&act=add">
+                    <form class="form-material m-t-10" method="post" action="?page=ref&act=add">
 
-                        <!-- Row in form START -->
-                        <div class="row">
-                            <div class="input-field col s3 tooltipped" data-position="top" data-tooltip="Isi dengan huruf, angka, spasi dan titik(.)">
-                                <i class="material-icons prefix md-prefix">font_download</i>
-                                <input id="kd" type="text" class="validate" maxlength="30" name="kode" required>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Kode </label>
+                            <div class="col-md-9">
+                                <input id="kd" type="text" class="form-control form-control-line" maxlength="30" name="kode" required>
                                     <?php
                                         if(isset($_SESSION['kode'])){
                                             $kode = $_SESSION['kode'];
@@ -136,11 +138,14 @@
                                             unset($_SESSION['duplikasi']);
                                         }
                                     ?>
-                                <label for="kd">Kode</label>
+                                     </div>
+                                 </div>
                             </div>
-                            <div class="input-field col s9">
-                                <i class="material-icons prefix md-prefix">text_fields</i>
-                                <input id="nama" type="text" class="validate" name="nama" required>
+                    <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="control-label text-right col-md-3">Nama</label>
+                        <div class="col-md-9">
+                                <input id="nama" type="text" class="form-control form-control-line" name="nama" required>
                                     <?php
                                         if(isset($_SESSION['namaref'])){
                                             $namaref = $_SESSION['namaref'];
@@ -148,11 +153,16 @@
                                             unset($_SESSION['namaref']);
                                         }
                                     ?>
-                                <label for="nama">Nama</label>
+                                </div>
                             </div>
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix md-prefix">subject</i>
-                                <textarea id="uraian" class="materialize-textarea" name="uraian" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="control-label text-right col-md-3">Uraian</label>
+                            <div class="col-md-9">
+                                <textarea id="uraian" rows="2" class="form-control form-control-line" name="uraian" required></textarea>
                                     <?php
                                         if(isset($_SESSION['uraian'])){
                                             $uraian = $_SESSION['uraian'];
@@ -160,24 +170,24 @@
                                             unset($_SESSION['uraian']);
                                         }
                                     ?>
-                                <label for="uraian">Uraian</label>
+                                </div>
                             </div>
                         </div>
-                        <!-- Row in form END -->
-                        <div class="row">
-                            <div class="col 6">
-                                <button type="submit" name="submit" class="btn-large blue waves-effect waves-light">SIMPAN <i class="material-icons">done</i></button>
-                            </div>
-                            <div class="col 6">
-                                <a href="?page=ref" class="btn-large deep-orange waves-effect waves-light">BATAL <i class="material-icons">clear</i></a>
-                            </div>
-                        </div>
-
+                    </div>
+                    
+                    <div  style="margin-left: 40px;">
+                        <button type="submit" name="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                        <a href="?page=ref" class="btn btn-inverse">Cancel</a>
+                    </div>
+                    
                     </form>
                     <!-- Form END -->
 
                 </div>
                 <!-- Row form END -->
+        </div>
+     </div>
+  </div>
 
 <?php
             }

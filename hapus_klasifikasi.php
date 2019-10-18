@@ -22,29 +22,27 @@
 
                 if(isset($_SESSION['errQ'])){
                     $errQ = $_SESSION['errQ'];
-                    echo '<div id="alert-message" class="row jarak-card">
-                            <div class="col m12">
-                                <div class="card red lighten-5">
-                                    <div class="card-content notif">
-                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errQ.'</span>
+                    echo '<div class="row">
+                                <div class="col-9">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$errQ.'</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                     unset($_SESSION['errQ']);
                 }
 
     	  echo '
-          <!-- Row form Start -->
-			<div class="row jarak-card">
-			    <div class="col m12">
-                    <div class="card">
-                        <div class="card-content">
-        			        <table>
-        			            <thead class="red lighten-5 red-text">
-        			                <div class="confir red-text"><i class="material-icons md-36">error_outline</i>
-        			                Apakah Anda yakin akan menghapus data ini?</div>
-        			            </thead>
+            <div class="container-fluid">
+                <div class="card m-t-20">
+                    <div class="card-body">  
+                         <div class="table-responsive m-t-5">
+                            <table  class="table table-hover">
+                                <thead id="head">
+                                    <p class="text-danger"> Apakah Anda yakin akan menghapus data ini ?</p>
+                                </thead>
 
         			            <tbody>
         			                <tr>
@@ -62,16 +60,20 @@
         			                    <td width="1%">:</td>
         			                    <td width="86%">'.$row['uraian'].'</td>
         			                </tr>
+                                    <tr>
+                                    <td width="13%"></td>
+                                    <td width="1%"></td>
+                                    <td width="86%">
+                                        <a href="?page=ref&act=del&submit=yes&id_klasifikasi='.$row['id_klasifikasi'].'" class="btn btn-danger">HAPUS</a>
+                                        <a href="?page=ref" class="btn btn-primary">BATAL</a>
+                                    </td>
+                                </tr>
         			            </tbody>
         			   		</table>
+                            </div>
+                        </div>   
     			        </div>
-                        <div class="card-action">
-        	                <a href="?page=ref&act=del&submit=yes&id_klasifikasi='.$row['id_klasifikasi'].'" class="btn-large deep-orange waves-effect waves-light white-text">HAPUS <i class="material-icons">delete</i></a>
-        	                <a href="?page=ref" class="btn-large blue waves-effect waves-light white-text">BATAL <i class="material-icons">clear</i></a>
-        	            </div>
-                    </div>
-                </div>
-            </div>
+                        
             <!-- Row form END -->';
 
         	if(isset($_REQUEST['submit'])){
