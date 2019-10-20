@@ -278,6 +278,10 @@
             .container {
                 margin-top: -20px !important;
             }
+            .noprint{
+                display:none;
+            }
+        
         }
         noscript{
             color: #fff;
@@ -291,6 +295,8 @@
                 width: 600px!important;
             }
         }
+
+
     </style>
 </head>
 <?php

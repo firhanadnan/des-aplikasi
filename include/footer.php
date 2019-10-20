@@ -1,9 +1,11 @@
 <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
+            <div class="noprint">
             <footer class="footer">
                 © 2019 Codebanten
             </footer>
+            </div>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -253,6 +255,7 @@
             <script>
                 // MAterial Date picker
                 $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+                $('#mdate2').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
                 $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
                 $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
 

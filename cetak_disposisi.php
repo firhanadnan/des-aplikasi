@@ -1,10 +1,6 @@
 <?php
     //cek session
-    if(empty($_SESSION['admin'])){
-        $_SESSION['err'] = '<strong>ERROR!</strong> Anda harus login terlebih dahulu.';
-        header("Location: ./");
-        die();
-    } else {
+
 
         echo '
         <style type="text/css">
@@ -165,10 +161,10 @@
             }
         </style>
 
-        <body onload="window.print()">
-
+ 
+        <body >
         <!-- Container START -->
-        <div class="container">
+        <div class="container" onload="window.print()">
             <div >
                 <div class="disp">';
                     $query2 = mysqli_query($config, "SELECT institusi, nama, status, alamat, logo, website, email FROM tbl_instansi");
@@ -332,6 +328,9 @@
     <!-- Container END -->
 
     </body>';
-    }
+    
 }
 ?>
+<script>
+        window.print();
+</script>

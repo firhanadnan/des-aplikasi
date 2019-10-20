@@ -12,78 +12,73 @@
                     window.alert("ERROR! Anda tidak memiliki hak akses untuk membuka halaman ini");
                     window.location.href="./logout.php";
                   </script>';
-        } else {
+        } else { ?>
 
-          echo '<!-- Row Start -->
-                <div class="row">
-                    <!-- Secondary Nav START -->
-                    <div class="col s12">
-                        <div class="z-depth-1 red lighten-1">
-                            <nav class="secondary-nav red lighten-1">
-                                <div class="nav-wrapper red lighten-1">
-                                    <div class="col m12">
-                                        <ul class="left">
-                                            <li class="waves-effect waves-light"><a href="?page=sett&sub=rest" class="judul"><i class="material-icons">storage</i> Restore Database</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                    <!-- Secondary Nav END -->
-                </div>
-                <!-- Row END -->';
-
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor m-b-0 m-t-0">Restore Database</h3>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active">Restore</li>
+                </ol>
+            </div>
+        </div>
+<?php
                 if(isset($_SESSION['errEmpty'])){
                     $errEmpty = $_SESSION['errEmpty'];
-                    echo '<div id="alert-message" class="row">
-                            <div class="col m12">
-                                <div class="card red lighten-5">
-                                    <div class="card-content notif">
-                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errEmpty.'</span>
+                    echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$errEmpty.'</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                     unset($_SESSION['errEmpty']);
                 }
                 if(isset($_SESSION['errFormat'])){
                     $errFormat = $_SESSION['errFormat'];
-                    echo '<div id="alert-message" class="row">
-                            <div class="col m12">
-                                <div class="card red lighten-5">
-                                    <div class="card-content notif">
-                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errFormat.'</span>
+                    echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$errFormat.'</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                     unset($_SESSION['errFormat']);
                 }
                 if(isset($_SESSION['errUpload'])){
                     $errUpload = $_SESSION['errUpload'];
-                    echo '<div id="alert-message" class="row">
-                            <div class="col m12">
-                                <div class="card red lighten-5">
-                                    <div class="card-content notif">
-                                        <span class="card-title red-text"><i class="material-icons md-36">clear</i> '.$errUpload.'</span>
+                    echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$errUpload.'</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                     unset($_SESSION['errUpload']);
                 }
                 if(isset($_SESSION['succRestore'])){
                     $succRestore = $_SESSION['succRestore'];
-                    echo '<div id="alert-message" class="row">
-                            <div class="col m12">
-                                <div class="card green lighten-5">
-                                    <div class="card-content notif">
-                                        <span class="card-title green-text"><i class="material-icons md-36">done</i> '.$succRestore.'</span>
+                    echo '<div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p>'.$succRestore.'</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>';
+                            </div>';
                     unset($_SESSION['succRestore']);
                 }
 
@@ -166,32 +161,36 @@
 
                 } else {
                     echo '
-
-                    <!-- Row form Start -->
                     <div class="row">
-                        <div class="col m12">
+                        <div class="col-12">
                             <div class="card">
-                                <div class="card-content">
-                                    <span class="card-title black-text">Restore Database</span>
+                                <div class="card-body">
+                                    <h4 class="card-title text-info">Restore Database</b></h4>
                                     <p class="kata">Silakan pilih file database dan masukan password saat login lalu klik tombol <strong>"Restore"</strong> untuk melakukan restore database dari hasil backup yang telah dibuat sebelumnya. Jika belum ada file database hasil backup, silakan lakukan backup terlebih dahulu melalui menu <strong><a class="blue-text" style="text-transform: capitalize;margin-right: 0;" href="?page=sett&sub=back">"Backup Database"</a>.</strong></p><br/>
                                 </div>
-                                <div class="card-action">
-                                    <form method="post" enctype="multipart/form-data">
-                                        <div class="file-field input-field col m6 tooltipped" data-position="top" data-tooltip="Format file database yang diperbolehkan hanya *.SQL">
-                                            <div class="btn light-green darken-1">
-                                                <span>File</span>
-                                                <input type="file" name="file" accept=".sql" required>
-                                            </div>
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path validate" placeholder="Upload file backup database sql" type="text">
-                                             </div>
+
+                                <form class="form-material m-t-10" method="POST"  enctype="multipart/form-data">
+                                <!-- Row in form START -->
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="control-label text-right col-md-3">Input DB</label>
+                                        <div class="col-md-9">
+                                        <input type="file" name="file" accept=".sql" required class="form-control form-control-line" >     
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="control-label text-right col-md-3">Password Account</label>
+                                    <div class="col-md-8">
+                                        <input id="password_lama" type="password" name="password" class="form-control form-control-line"  required> 
                                         </div>
-                                        <div class="input-field col s4 tooltipped" data-position="top" data-tooltip="Masukkan password Anda">
-                                            <i class="material-icons prefix md-prefix">lock</i>
-                                            <input id="password_lama" type="password" class="validate" name="password" required>
-                                            <label for="password_lama">Password</label>
-                                        </div>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="submit" class="btn-large blue waves-effect waves-light" name="restore">RESTORE <i class="material-icons">restore</i></button>
+                                    </div>
+                               </div>
+                            </div>
+                                
+                            <button style="margin-left:60px; margin-bottom:20px;" type="submit" class="btn btn-warning" name="restore">RESTORE</button>
                                     </form>
                                 </div>
                             </div>

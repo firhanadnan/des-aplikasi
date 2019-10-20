@@ -14,14 +14,27 @@
 <?php include('include/head.php'); ?>
 <!-- Include Head END --> 
 
+<body class="fix-header logo-center bg">
 
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+<header class="topbar">
 <!-- Include Navigation START -->
 <?php include('include/menu.php'); ?>
+
 <!-- Include Navigation END -->  
+</header>
+<!-- ============================================================== -->
+<?php include('include/menu_bawah.php'); ?>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
        <!-- ============================================================== -->
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" >
             <?php
             if(isset($_REQUEST['page'])){
                 $page = $_REQUEST['page'];

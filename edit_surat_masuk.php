@@ -240,12 +240,12 @@
                                 <label class="control-label text-right col-md-3">Kode klasifikasi</label>
                                 <div class="col-md-9">
                                     <select id="kode" type="text" name="kode" class="form-control form-control-line" placeholder="Masukan Kode Klasifikasi">
-                                       <option value="<?= $data[kode];?>"><?= $kode;?></option>
+                                       <option value="<?= $data[kode];?>"><?= $kode?></option>
                                             <?php
                                                 $query = "select * from tbl_klasifikasi";
                                                 $hasil = mysqli_query($config,$query);
                                                 while($data=mysqli_fetch_array($hasil)){
-                                                    echo "<option value=$data[kode]>$data[nama]</option>";
+                                                    echo "<option value=$data[kode]>".$data[kode]."$data[nama]</option>";
                                                 }
 
                                             ?>
