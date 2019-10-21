@@ -130,12 +130,14 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
+                                <a href="?page=tsm">
                                 <div class="d-flex flex-row">
                                     <div class="round round-lg align-self-center round-info"><i class="mdi mdi-email-outline"></i></div>
                                     <div class="m-l-10 align-self-center">
                                         <h3 class="m-b-0 font-light"><?php echo $count1; ?></h3>
                                         <h5 class="text-muted m-b-0">Total Surat Masuk</h5></div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -144,12 +146,14 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
+                                <a href="?page=tsk">
                                 <div class="d-flex flex-row">
                                     <div class="round round-lg align-self-center round-warning"><i class="mdi mdi-email-open-outline"></i></div>
                                     <div class="m-l-10 align-self-center">
                                         <h3 class="m-b-0 font-lgiht"><?php echo $count2; ?></h3>
                                         <h5 class="text-muted m-b-0">Total Surat Keluar</h5></div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -158,12 +162,14 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
+                                <a href="#">
                                 <div class="d-flex flex-row">
-                                    <div class="round round-lg align-self-center round-success"><i class="mdi mdi-cart-outline"></i></div>
+                                    <div class="round round-lg align-self-center round-success"><i class="mdi mdi-archive"></i></div>
                                     <div class="m-l-10 align-self-center">
                                         <h3 class="m-b-0 font-lgiht"><?php echo $count3; ?></h3>
                                         <h5 class="text-muted m-b-0">Total Disposisi</h5></div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -175,6 +181,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
+                                <a href="?page=ref">
                                 <div class="d-flex flex-row">
                                     <div class="round round-lg align-self-center round-primary"><i class="mdi mdi-message"></i></div>
                                     <div class="m-l-10 align-self-center">
@@ -182,25 +189,33 @@
                                         <h5 class="text-muted m-b-0">Total Klasifikasi Surat</h5>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <!-- Column -->
                     <!-- Column -->
+                    <?php
+                    if($_SESSION['id_user'] == 1 || $_SESSION['admin'] == 2){?>
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
+                                <a href="?page=sett&sub=usr">
                                 <div class="d-flex flex-row">
                                     <div class="round round-lg align-self-center round-danger"><i class="mdi mdi-account-circle"></i></div>
                                     <div class="m-l-10 align-self-center">
                                         <h3 class="m-b-0 font-lgiht"><?php echo $count5; ?></h3>
                                         <h5 class="text-muted m-b-0">Total Pengguna</h5></div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     <!-- Column -->
                     </div>
                     <!-- Column -->
+                     <?php
+                        }
+                    ?>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->

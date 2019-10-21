@@ -208,6 +208,7 @@
             <div class="card-body">
                 <h4 class="card-title">Input Surat Keluar</h4>
                     <form class="form-material m-t-10" method="POST" action="?page=tsk&act=edit" enctype="multipart/form-data">
+                    <input type="hidden" name="id_surat" value="<?php echo $id_surat ;?>">
                     <!-- Row in form START -->
                     <div class="row">
                     <div class="col-md-6">

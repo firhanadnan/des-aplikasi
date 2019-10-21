@@ -10,9 +10,11 @@ CREATE TABLE `tbl_disposisi` (
   `id_surat` int(10) NOT NULL,
   `id_user` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_disposisi`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 INSERT INTO tbl_disposisi VALUES("3","Ani Triastuti, S.E., S.Pd","Segera hadiri undangan","Penting","2016-05-17","Mohon hadir tepat waktu","14","1");
+INSERT INTO tbl_disposisi VALUES("4","ibu ani","mohon segera dihadiri agar mendapatkan makanan gratis bro lumayan","Penting","2019-10-19","laksanakan","13","1");
+INSERT INTO tbl_disposisi VALUES("7","ibu jumhari","minum yuk kang","Rahasia","2019-10-19","laksanakan","15","1");
 
 
 
@@ -33,7 +35,7 @@ CREATE TABLE `tbl_instansi` (
   PRIMARY KEY (`id_instansi`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO tbl_instansi VALUES("1","YAYASAN USAHA PENINGKATAN PENDIDIKAN TEKNOLOGI","SMK Yuppentek 1 Tangerang","Akta Notaris: SLAMET , SH, M.Hum No. 119/2013","Jl. Veteran No. 1 Kota Tangerang Tlp. 021-5524518 Fax. 021-55797521","H. Riza Fachri, S.Kom.","-","http://www.smkyuppentek1.sch.id","esemkayuppenteksatu@yahoo.co.id","logo.png","1");
+INSERT INTO tbl_instansi VALUES("1","YAYASAN USAHA PENINGKATAN PENDIDIKAN TEKNOLOGI","SMK Yuppentek 1 Tangerang","Akta Notaris: SLAMET , SH, M.Hum No. 119/2013","Jl. Veteran No. 1 Kota Tangerang Tlp. 021-5524518 Fax. 021-55797521","H. Riza Fachri, S.Kom.","-","http://www.smkyuppentek1.sch.id","esemkayuppenteksatu@yahoo.co.id","logo1.gif","1");
 
 
 
@@ -46,9 +48,10 @@ CREATE TABLE `tbl_klasifikasi` (
   `uraian` mediumtext NOT NULL,
   `id_user` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_klasifikasi`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 INSERT INTO tbl_klasifikasi VALUES("1","420","PENDIDIKAN","PENDIDIKAN","1");
+INSERT INTO tbl_klasifikasi VALUES("2","421","Dinas Pemuda Olahraga","Dispora","1");
 
 
 
@@ -82,9 +85,9 @@ CREATE TABLE `tbl_surat_keluar` (
   `keterangan` varchar(250) NOT NULL,
   `id_user` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_surat`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
-INSERT INTO tbl_surat_keluar VALUES("6","6","gatau","4.4.4.2","asdsadsadasd","426.4","2019-10-04","2019-10-14","3795-default_avatar.jpg","ituu","1");
+INSERT INTO tbl_surat_keluar VALUES("7","7","ibu jumhari s.pd","B.5/A7775","rapat dengan wali kota tangerang untuk membahas program sekolah bersih","421","2019-10-17","2019-10-21","4911-3299-1-21539-1-10-20180723.pdf","testing kedua","1");
 
 
 
@@ -107,8 +110,8 @@ CREATE TABLE `tbl_surat_masuk` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 INSERT INTO tbl_surat_masuk VALUES("13","3","3 / XI/M.BIG/2016","Musyawarah Guru Mata Pelajaran Bahasa Inggris","Surat edaran pertemuan rutin musyawarah guru mata pelajaran bahasa inggris.","420","A.3","2016-04-19","2016-07-24","","-","5");
-INSERT INTO tbl_surat_masuk VALUES("14","4","123","depag","test","420","A4","2019-10-16","2019-10-16","2346-ktp.pdf","testing","1");
-INSERT INTO tbl_surat_masuk VALUES("15","7","123223","dispora","test","420.1","A5","2019-10-19","2019-10-18","192-pas foto.pdf","testing 2","1");
+INSERT INTO tbl_surat_masuk VALUES("14","4","123","depag","tolong hadiri kegiatan amal bersama anak yatim di jalan kenangan no 5 ","420","A4","2019-10-16","2019-10-16","5198-69-233-1-PB.pdf","testing","1");
+INSERT INTO tbl_surat_masuk VALUES("15","7","123223","dispora","testing wkwkwkwkwkwkw djasdsjad sahdjvsadvsa sajhdvasjvdasd sajhdvjhasdvas sdvasjvdasd  ","421","A5","2019-10-19","2019-10-18","4413-3299-1-21539-1-10-20180723.pdf","testing 2","1");
 
 
 
@@ -122,10 +125,11 @@ CREATE TABLE `tbl_user` (
   `nip` varchar(25) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 INSERT INTO tbl_user VALUES("1","admin","21232f297a57a5a743894a0e4a801fc3","Firhan Adnan ","-","1");
 INSERT INTO tbl_user VALUES("2","disposisi","13bb8b589473803f26a02e338f949b8c","operator","-","3");
+INSERT INTO tbl_user VALUES("3","operator2","9e64fc8a2ad3331c44a846c3a2b4bb14","operator second","1101151316","3");
 
 
 
